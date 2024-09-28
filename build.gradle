@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+
+allprojects {
+    group = 'com.myorg'
+    version = '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+dependencies {
+    implementation 'software.amazon.awscdk:aws-cdk-lib:2.160.0'
+    implementation 'software.constructs:constructs:10.1.42'
+    implementation project(':lambda-redirect')
+}
+
+task run(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.myorg.MyAWSInfraApp'
+}
