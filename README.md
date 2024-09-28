@@ -19,6 +19,10 @@ This project demonstrates how to create an AWS Lambda function for HTTP redirect
    ```bash
    npm install -g aws-cdk
    ```
+   or
+   ```bash
+   brew install awscli
+    ```
 4. **Gradle**: If Gradle is not installed, use the Gradle wrapper provided (`./gradlew`) for build and setup tasks.
 
 ## Setup Instructions
